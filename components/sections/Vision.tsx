@@ -86,7 +86,7 @@ export default function Vision() {
       <div className="absolute bottom-0 left-0 right-0 h-[10vh] bg-black z-20" />
 
       {/* Floating particles background overlay */}
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-10 mix-blend-overlay z-10 pointer-events-none" />
 
       <div className="relative z-30 w-full h-full flex items-center justify-center">
         {VISION.map((text, index) => (
@@ -96,7 +96,7 @@ export default function Vision() {
             className="absolute top-1/2 left-0 right-0 -translate-y-1/2 text-center px-4"
             style={{ willChange: "transform, opacity, filter" }}
           >
-            <h2 className="font-display text-4xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter mix-blend-difference" style={{ textShadow: "0 0 40px rgba(255,255,255,0.2)" }}>
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter mix-blend-difference" style={{ textShadow: "0 0 40px rgba(255,255,255,0.2)" }}>
               {text}
             </h2>
           </div>

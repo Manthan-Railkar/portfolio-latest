@@ -113,7 +113,7 @@ export default function Skills() {
       className="relative min-h-screen overflow-hidden bg-[#020202]"
       style={{ perspective: "2000px" }}
     >
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
 
       {/* Grid lines background */}
       <div
@@ -132,18 +132,18 @@ export default function Skills() {
           <div className="font-display text-[10px] tracking-[0.5em] text-[var(--accent-red)] mb-4">
             // CHAPTER 02
           </div>
-          <h2 className="font-display text-5xl md:text-7xl font-black tracking-wider leading-none">
+          <h2 className="font-display text-3xl sm:text-5xl md:text-7xl font-black tracking-wider leading-none">
             TECH <span className="text-[var(--accent-red)]">STACK</span>
           </h2>
         </div>
 
         {/* 3D Container for Cards */}
-        <div ref={containerRef} className="relative h-[60vh] w-full max-w-3xl mx-auto transform-style-3d">
+        <div ref={containerRef} className="relative h-[50vh] sm:h-[60vh] w-full max-w-3xl mx-auto transform-style-3d">
           {SKILLS.map((category, index) => (
             <div
               key={category.category}
               ref={(el) => { cardsRef.current[index] = el; }}
-              className="absolute inset-0 w-full bg-[#080808]/80 backdrop-blur-xl border border-white/10 rounded-xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+              className="absolute inset-0 w-full bg-[#080808]/80 backdrop-blur-xl border border-white/10 rounded-xl p-5 sm:p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.8)]"
               style={{ transformStyle: "preserve-3d" }}
             >
               <div className="absolute top-0 right-8 w-[2px] h-16 bg-[var(--accent-red)] shadow-[0_0_15px_rgba(225,6,0,0.6)]" />
@@ -152,11 +152,11 @@ export default function Skills() {
                 0{index + 1}
               </div>
 
-              <h3 className="font-display text-2xl tracking-[0.3em] text-white mb-10 glitch" data-text={category.category.toUpperCase()}>
+              <h3 className="font-display text-lg sm:text-2xl tracking-[0.3em] text-white mb-6 sm:mb-10 glitch" data-text={category.category.toUpperCase()}>
                 {category.category.toUpperCase()}
               </h3>
 
-              <div className="space-y-8 relative z-10">
+              <div className="space-y-5 sm:space-y-8 relative z-10">
                 {category.items.map((skill) => (
                   <div key={skill.name} className="group">
                     <div className="flex justify-between mb-3">

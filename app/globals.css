@@ -247,7 +247,7 @@ html.lenis body {
 
 /* ===== SECTION SPACING ===== */
 .section-padding {
-  padding: 120px 0;
+  padding: 80px 0;
 }
 
 /* ===== WATERMARK TEXT ===== */
@@ -366,10 +366,31 @@ html.lenis body {
   color: #ffffff;
 }
 
-/* ===== RESPONSIVE TYPOGRAPHY ===== */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE TYPOGRAPHY & LAYOUT ===== */
+
+/* Mobile-first: fix viewport height on iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Small mobile (<640px) */
+@media (max-width: 639px) {
   .section-padding {
-    padding: 80px 0;
+    padding: 40px 0;
+  }
+
+  /* Prevent horizontal overflow from large decorative text */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Tablet (640px - 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
   }
 }
 

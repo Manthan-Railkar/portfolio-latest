@@ -58,7 +58,7 @@ export default function CinematicTransition({ text, subtext }: CinematicTransiti
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden gpu-accelerated"
+      className="relative w-full h-[20vh] flex items-center justify-center overflow-hidden gpu-accelerated"
     >
       {/* Background cinematic overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-transparent z-0" />

@@ -128,13 +128,13 @@ export default function Experience() {
           <div className="font-display text-[10px] tracking-[0.5em] text-[var(--accent-red)] mb-4">
             // CHAPTER 05
           </div>
-          <h2 className="font-display text-5xl md:text-7xl font-black tracking-wider leading-none">
+          <h2 className="font-display text-3xl sm:text-5xl md:text-7xl font-black tracking-wider leading-none">
             RACE <span className="text-[var(--accent-red)]">HISTORY</span>
           </h2>
         </div>
 
         {/* Timeline */}
-        <div ref={timelineRef} className="relative mt-24">
+        <div ref={timelineRef} className="relative mt-12 md:mt-24">
           {/* Central vertical line */}
           <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[2px]">
             <div
@@ -148,7 +148,7 @@ export default function Experience() {
           </div>
 
           {/* Timeline entries */}
-          <div className="space-y-24 md:space-y-32 pb-24">
+          <div className="space-y-16 md:space-y-32 pb-16 md:pb-24">
             {EXPERIENCE.map((exp, index) => (
               <div
                 key={index}
@@ -173,7 +173,7 @@ export default function Experience() {
 
                 {/* Content card */}
                 <div
-                  className={`telemetry-card ml-12 md:ml-0 md:w-[40%] bg-white/[0.02] border border-white/5 backdrop-blur-sm p-8 rounded-xl hover:bg-white/[0.04] transition-colors duration-300 relative group overflow-hidden ${
+                  className={`telemetry-card ml-12 md:ml-0 md:w-[40%] bg-white/[0.02] border border-white/5 backdrop-blur-sm p-5 sm:p-8 rounded-xl hover:bg-white/[0.04] transition-colors duration-300 relative group overflow-hidden ${
                     index % 2 === 0
                       ? "md:mr-auto"
                       : "md:ml-auto"
@@ -193,7 +193,7 @@ export default function Experience() {
                       <div className="h-[1px] flex-grow bg-white/10" />
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold text-white mb-1 group-hover:text-[var(--accent-red)] transition-colors">
+                    <h3 className="font-display text-lg sm:text-2xl font-bold text-white mb-1 group-hover:text-[var(--accent-red)] transition-colors">
                       {exp.role}
                     </h3>
                     <div className="font-display text-xs tracking-wider text-white/50 mb-6">

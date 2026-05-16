@@ -102,11 +102,10 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-display text-[10px] tracking-[0.2em] transition-colors duration-300 ${
-                  activeSection === link.href.replace("#", "")
+                className={`font-display text-[10px] tracking-[0.2em] transition-colors duration-300 ${activeSection === link.href.replace("#", "")
                     ? "text-[var(--accent-red)]"
                     : "text-white/40 hover:text-white/80"
-                }`}
+                  }`}
               >
                 {link.label.toUpperCase()}
               </a>

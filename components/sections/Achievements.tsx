@@ -80,17 +80,17 @@ export default function Achievements() {
           <div className="font-display text-[10px] tracking-[0.5em] text-[var(--accent-red)] mb-4">
             // CHAPTER 04
           </div>
-          <h2 className="font-display text-5xl md:text-7xl font-black tracking-wider leading-none">
+          <h2 className="font-display text-3xl sm:text-5xl md:text-7xl font-black tracking-wider leading-none">
             HALL OF <span className="text-[var(--accent-red)]">FAME</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {ACHIEVEMENTS.map((achievement, index) => (
             <div
               key={achievement.id}
               ref={(el) => { cardsRef.current[index] = el; }}
-              className="group relative flex flex-col items-center text-center p-8 bg-white/[0.02] border border-white/5 backdrop-blur-md overflow-hidden"
+              className="group relative flex flex-col items-center text-center p-6 sm:p-8 bg-white/[0.02] border border-white/5 backdrop-blur-md overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Cinematic Hover Glow */}
@@ -99,11 +99,11 @@ export default function Achievements() {
               {/* Top border red line */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent-red)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-x-0 group-hover:scale-x-100 origin-center" />
 
-              <div className="font-display text-5xl font-black text-white/10 mb-6 relative z-10 group-hover:-translate-y-2 transition-transform duration-500">
+              <div className="font-display text-4xl sm:text-5xl font-black text-white/10 mb-4 sm:mb-6 relative z-10 group-hover:-translate-y-2 transition-transform duration-500">
                 {achievement.id}
               </div>
               
-              <h3 className="font-display text-xl font-bold text-white mb-2 relative z-10">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 relative z-10">
                 {achievement.title}
               </h3>
               

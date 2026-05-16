@@ -343,130 +343,135 @@ export default function Hero() {
 
       /* ═══════════════════════════════════════════════════════════
          SCROLL-DRIVEN CINEMATIC PARALLAX SYSTEM
-         Triggered as user scrolls past the hero section
+         Triggered after intro completes so baseline visibility is preserved
          ═══════════════════════════════════════════════════════════ */
+      const initScrollParallax = () => {
+        const scrollConfig = {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2, // smooth inertia
+        };
 
-      const scrollConfig = {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1.2, // smooth inertia
+        // Outlined surname — shifts UP faster (deep background layer)
+        gsap.to(surnameOutlinedRef.current, {
+          y: -200,
+          scale: 1.08,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 0.8 },
+        });
+
+        // Solid foreground surname — shifts UP at medium speed
+        gsap.to(surnameSolidRef.current, {
+          y: -120,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 1.0 },
+        });
+
+        // Script first name — drifts left + fades
+        gsap.to(firstNameRef.current, {
+          x: -80,
+          y: -60,
+          opacity: 0,
+          scale: 0.95,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 1.2 },
+        });
+
+        // Portrait — zooms in subtly, rotates slightly, shifts up
+        gsap.to(portraitRef.current, {
+          y: -80,
+          scale: 1.1,
+          rotateZ: -1.5,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 1.5 },
+        });
+
+        // Number 07 (left) — drifts up-left
+        gsap.to(numberLeftRef.current, {
+          y: -60,
+          x: -20,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 0.6 },
+        });
+
+        // Number 07 (right) — drifts up-right
+        gsap.to(numberRightRef.current, {
+          y: -60,
+          x: 20,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 0.6 },
+        });
+
+        // Red accent line — extends then fades
+        gsap.to(lineRef.current, {
+          width: "300px",
+          opacity: 0,
+          y: -40,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 1.0 },
+        });
+
+        // HUD bars — fade out quickly
+        gsap.to(hudTopRef.current, {
+          y: -30,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 0.5, end: "50% top" },
+        });
+
+        gsap.to(hudBottomRef.current, {
+          y: 30,
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: { ...scrollConfig, scrub: 0.5, end: "40% top" },
+        });
+
+        // Scroll indicator — exits early
+        gsap.to(scrollRef.current, {
+          opacity: 0,
+          y: 20,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "15% top",
+            scrub: 0.3,
+          },
+        });
+
+        // Glow pulse intensifies mid-scroll then fades
+        gsap.to(glowPulseRef.current, {
+          opacity: 0.3,
+          scale: 1.3,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "40% top",
+            scrub: 1.0,
+          },
+        });
+        gsap.to(glowPulseRef.current, {
+          opacity: 0,
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "40% top",
+            end: "bottom top",
+            scrub: 1.0,
+          },
+        });
+
+        ScrollTrigger.refresh();
       };
 
-      // Outlined surname — shifts UP faster (deep background layer)
-      gsap.to(surnameOutlinedRef.current, {
-        y: -200,
-        scale: 1.08,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 0.8 },
-      });
-
-      // Solid foreground surname — shifts UP at medium speed
-      gsap.to(surnameSolidRef.current, {
-        y: -120,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 1.0 },
-      });
-
-      // Script first name — drifts left + fades
-      gsap.to(firstNameRef.current, {
-        x: -80,
-        y: -60,
-        opacity: 0,
-        scale: 0.95,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 1.2 },
-      });
-
-      // Portrait — zooms in subtly, rotates slightly, shifts up
-      gsap.to(portraitRef.current, {
-        y: -80,
-        scale: 1.1,
-        rotateZ: -1.5,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 1.5 },
-      });
-
-      // Number 07 (left) — drifts up-left
-      gsap.to(numberLeftRef.current, {
-        y: -60,
-        x: -20,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 0.6 },
-      });
-
-      // Number 07 (right) — drifts up-right
-      gsap.to(numberRightRef.current, {
-        y: -60,
-        x: 20,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 0.6 },
-      });
-
-      // Red accent line — extends then fades
-      gsap.to(lineRef.current, {
-        width: "300px",
-        opacity: 0,
-        y: -40,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 1.0 },
-      });
-
-      // HUD bars — fade out quickly
-      gsap.to(hudTopRef.current, {
-        y: -30,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 0.5, end: "50% top" },
-      });
-
-      gsap.to(hudBottomRef.current, {
-        y: 30,
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: { ...scrollConfig, scrub: 0.5, end: "40% top" },
-      });
-
-      // Scroll indicator — exits early
-      gsap.to(scrollRef.current, {
-        opacity: 0,
-        y: 20,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "15% top",
-          scrub: 0.3,
-        },
-      });
-
-      // Glow pulse intensifies mid-scroll then fades
-      gsap.to(glowPulseRef.current, {
-        opacity: 0.3,
-        scale: 1.3,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "40% top",
-          scrub: 1.0,
-        },
-      });
-      gsap.to(glowPulseRef.current, {
-        opacity: 0,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "40% top",
-          end: "bottom top",
-          scrub: 1.0,
-        },
-      });
+      master.call(initScrollParallax);
 
     }, sectionRef);
 
@@ -486,22 +491,22 @@ export default function Hero() {
       <div className="absolute inset-0 z-[1] bg-[#9b0c0f]" />
       <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.8)_100%)] pointer-events-none mix-blend-multiply" />
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90" />
-      
+
       {/* Volumetric Red Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] z-[1] pointer-events-none opacity-60 mix-blend-screen"
-           style={{
-             background: "radial-gradient(ellipse at center, rgba(255,50,50,0.6) 0%, transparent 60%)",
-             filter: "blur(60px)",
-           }} />
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(255,50,50,0.6) 0%, transparent 60%)",
+          filter: "blur(60px)",
+        }} />
 
       {/* Atmospheric Smoke / Motion Blur Layers */}
       <div className="absolute inset-0 z-[1] pointer-events-none opacity-20"
-           style={{
-             backgroundImage: "url('/images/noise.png')",
-             backgroundRepeat: "repeat",
-             mixBlendMode: "overlay",
-           }} />
-           
+        style={{
+          backgroundImage: "url('/images/noise.svg')",
+          backgroundRepeat: "repeat",
+          mixBlendMode: "overlay",
+        }} />
+
       {/* ──── Background Glow Pulse ──── */}
       <div
         ref={glowPulseRef}
@@ -592,25 +597,25 @@ export default function Hero() {
         className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[3] opacity-0"
       >
         <div className="relative w-[380px] h-[520px] md:w-[480px] md:h-[660px] lg:w-[560px] lg:h-[780px]">
-          
+
           {/* Blurred Echo (Left) */}
           <div className="absolute top-0 bottom-0 -left-[50%] w-full opacity-30 mix-blend-screen pointer-events-none"
-               style={{ 
-                 filter: "blur(20px)",
-                 maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
-                 WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)"
-               }}>
-            <Image src="/images/portrait.png" alt="" fill className="object-cover object-top" />
+            style={{
+              filter: "blur(20px)",
+              maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)"
+            }}>
+            <Image src="/images/portrait.png" alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover object-top" />
           </div>
-          
+
           {/* Blurred Echo (Right) */}
           <div className="absolute top-0 bottom-0 -right-[50%] w-full opacity-30 mix-blend-screen pointer-events-none"
-               style={{ 
-                 filter: "blur(20px)",
-                 maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
-                 WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)"
-               }}>
-            <Image src="/images/portrait.png" alt="" fill className="object-cover object-top" />
+            style={{
+              filter: "blur(20px)",
+              maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)"
+            }}>
+            <Image src="/images/portrait.png" alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover object-top" />
           </div>
 
           {/* F1 Broadcast Dramatic Red Rim Light (Left) */}
@@ -640,6 +645,7 @@ export default function Hero() {
             src="/images/portrait.png"
             alt={SITE_CONFIG.name}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
             className="object-cover object-top filter contrast-[1.1] brightness-[0.95] mix-blend-screen"
             style={{
@@ -711,7 +717,7 @@ export default function Hero() {
         }}
       >
         <span className="font-display text-[10vw] md:text-7xl lg:text-[100px] font-black tracking-wider text-white inline-flex"
-              style={{ filter: "drop-shadow(0 0 20px rgba(0,0,0,0.8))" }}>
+          style={{ filter: "drop-shadow(0 0 20px rgba(0,0,0,0.8))" }}>
           {surnameLetters.map((char, i) => (
             <SplitChar key={i} char={char} index={i} refCb={setCharRef} />
           ))}
@@ -736,15 +742,7 @@ export default function Hero() {
         <div className="font-display text-[10px] tracking-[0.4em] text-white/20 mb-1">
           CREATIVE DEVELOPER
         </div>
-        <div
-          className="font-display text-6xl md:text-7xl font-black leading-none"
-          style={{
-            WebkitTextStroke: "1px rgba(255,255,255,0.1)",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          07
-        </div>
+
       </div>
 
       <div
@@ -754,15 +752,7 @@ export default function Hero() {
         <div className="font-display text-[10px] tracking-[0.4em] text-white/20 mb-1">
           SEASON 2024
         </div>
-        <div
-          className="font-display text-6xl md:text-7xl font-black leading-none"
-          style={{
-            WebkitTextStroke: "1px rgba(255,255,255,0.1)",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          07
-        </div>
+
       </div>
 
       {/* ──── HUD Top Bar ──── */}
@@ -800,7 +790,7 @@ export default function Hero() {
       >
         <div ref={tagRef} className="opacity-0">
           <div className="font-display text-[9px] tracking-[0.5em] text-[var(--accent-red)]/50 mb-1">
-            // PORTFOLIO
+            {"// PORTFOLIO"}
           </div>
           <div className="font-display text-[10px] tracking-[0.3em] text-white/25">
             FULL STACK DEVELOPER

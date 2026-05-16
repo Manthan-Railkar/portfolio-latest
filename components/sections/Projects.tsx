@@ -47,7 +47,7 @@ function ProjectCard({
 
   return (
     <div ref={cardRef}>
-      <GlassCard className="group flex flex-col md:flex-row gap-8 items-center rounded-2xl p-6 md:p-8 mb-12 hover:bg-white/[0.04] transition-colors duration-500">
+      <GlassCard className="group flex flex-col md:flex-row gap-6 md:gap-8 items-center rounded-2xl p-4 sm:p-6 md:p-8 mb-8 md:mb-12 hover:bg-white/[0.04] transition-colors duration-500">
 
       {/* Image Container with 3D Float */}
       <div className="w-full md:w-1/2 relative z-10">
@@ -57,7 +57,7 @@ function ProjectCard({
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           {/* Futuristic Overlay Pattern */}
-          <div className="absolute inset-0 z-20 pointer-events-none bg-[url('/images/noise.png')] opacity-10 mix-blend-overlay" />
+          <div className="absolute inset-0 z-20 pointer-events-none bg-[url('/images/noise.svg')] opacity-10 mix-blend-overlay" />
           <div className="absolute inset-0 z-20 pointer-events-none border-[rgba(255,255,255,0.05)] border-[1px] mix-blend-overlay" />
           
           <div className="absolute inset-0 bg-gradient-to-tr from-[#050505] to-transparent z-10 opacity-60" />
@@ -87,11 +87,11 @@ function ProjectCard({
           {project.id}
         </div>
         
-        <h3 className="font-display text-3xl font-bold text-white mb-4 group-hover:text-[var(--accent-red)] transition-colors duration-300">
+        <h3 className="font-display text-xl sm:text-3xl font-bold text-white mb-3 md:mb-4 group-hover:text-[var(--accent-red)] transition-colors duration-300">
           {project.title}
         </h3>
         
-        <p className="text-white/60 leading-relaxed mb-8">
+        <p className="text-sm sm:text-base text-white/60 leading-relaxed mb-6 md:mb-8">
           {project.description}
         </p>
         
@@ -156,7 +156,7 @@ export default function Projects() {
           <div className="font-display text-[10px] tracking-[0.5em] text-[var(--accent-red)] mb-4">
             // CHAPTER 03
           </div>
-          <h2 className="font-display text-5xl md:text-7xl font-black tracking-wider leading-none">
+          <h2 className="font-display text-3xl sm:text-5xl md:text-7xl font-black tracking-wider leading-none">
             SELECTED <span className="text-[var(--accent-red)]">WORK</span>
           </h2>
         </div>
